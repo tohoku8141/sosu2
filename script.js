@@ -19,20 +19,24 @@ function findPrimes() {
     }
 
     if (Number.isInteger(inputNumber)) {
-        if (isPrime(inputNumber)) {
-            resultElement.innerHTML = `${inputNumber} は素数です。`;
+        if (inputNumber.toString().length > 15) {
+            resultElement.innerHTML = '15桁以下の整数を入力してください。';
         } else {
-            let smallerPrime = inputNumber - 1;
-            while (!isPrime(smallerPrime) && smallerPrime > 1) {
-                smallerPrime--;
-            }
+            if (isPrime(inputNumber)) {
+                resultElement.innerHTML = `${inputNumber} は素数です。`;
+            } else {
+                let smallerPrime = inputNumber - 1;
+                while (!isPrime(smallerPrime) && smallerPrime > 1) {
+                    smallerPrime--;
+                }
 
-            let largerPrime = inputNumber + 1;
-            while (!isPrime(largerPrime)) {
-                largerPrime++;
-            }
+                let largerPrime = inputNumber + 1;
+                while (!isPrime(largerPrime)) {
+                    largerPrime++;
+                }
 
-            resultElement.innerHTML = `${inputNumber} は素数ではありません。<br>(${smallerPrime}) と (${largerPrime}) の間の合成数です。`;
+                resultElement.innerHTML = `${inputNumber} は素数ではありません。<br>(${smallerPrime}) と (${largerPrime}) の間の合成数です。`;
+            }
         }
     } else {
         resultElement.innerHTML = '整数を入力してください。';
