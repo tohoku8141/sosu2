@@ -1,5 +1,5 @@
 function isPrime(num) {
-    if (num <= 1 || !Number.isInteger(num)) return false;
+    if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
         if (num % i === 0) {
             return false;
@@ -18,19 +18,23 @@ function findPrimes() {
         return;
     }
 
-    if (isPrime(inputNumber)) {
-        resultElement.innerHTML = `${inputNumber} は素数です。`;
+    if (Number.isInteger(inputNumber)) {
+        if (isPrime(inputNumber)) {
+            resultElement.innerHTML = `${inputNumber} は素数です。`;
+        } else {
+            let smallerPrime = inputNumber - 1;
+            while (!isPrime(smallerPrime) && smallerPrime > 1) {
+                smallerPrime--;
+            }
+
+            let largerPrime = inputNumber + 1;
+            while (!isPrime(largerPrime)) {
+                largerPrime++;
+            }
+
+            resultElement.innerHTML = `${inputNumber} は素数ではありません。<br>(${smallerPrime}) と (${largerPrime}) の間の合成数です。`;
+        }
     } else {
-        let smallerPrime = Math.floor(inputNumber) - 1;
-        while (!isPrime(smallerPrime) && smallerPrime > 1) {
-            smallerPrime--;
-        }
-
-        let largerPrime = Math.ceil(inputNumber) + 1;
-        while (!isPrime(largerPrime)) {
-            largerPrime++;
-        }
-
-        resultElement.innerHTML = `${inputNumber} は素数ではありません。<br>(${smallerPrime}) と (${largerPrime}) の間の合成数です。`;
+        resultElement.innerHTML = '整数を入力してください。';
     }
 }
