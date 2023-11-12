@@ -1,16 +1,18 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    background: url('Images/test.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff; /* 文字の色を見やすいものに設定 */
 }
 
 .container {
     width: 50%;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* 背景画像を見やすくするために透明度を追加 */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* コンテナ内の文字色を設定 */
 }
 
 label {
@@ -34,3 +36,4 @@ button {
 #result {
     margin-top: 20px;
 }
+
